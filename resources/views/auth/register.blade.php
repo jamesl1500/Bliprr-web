@@ -1,3 +1,9 @@
+<?php
+$title = "Login";
+$description = "Jump back into the fun!";
+?>
+
+
 @extends('layouts.guest')
 
 @section('content')
@@ -15,13 +21,55 @@
         <div class="welcome-auth-inner">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-
+                <!-- Success Message -->
+                <?php
+                // Check if there are any errors
+                if(session('status'))
+                {
+                    ?>
+                        <div class="alert alert-success">
+                            <?php echo session('status'); ?>
+                        </div>
+                    <?php
+                }
+                ?>
+                
+                <!-- Error Messages -->
+                <?php
+                // Check if there are any errors
+                if($errors->any())
+                {
+                    ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <?php
+                                    foreach($errors->all() as $error)
+                                    {
+                                        ?>
+                                            <li><?php echo $error; ?></li>
+                                        <?php
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    <?php
+                }
+                ?>
                 <!-- Name -->
                 <div>
                     <label for="name" value="Name">Name</label>
 
                     <div class="inputField">
                         <input id="name" class="block mt-1 w-full" type="text" name="name" value="<?php old('name'); ?>" required autofocus />
+                    </div>
+                </div>
+
+                <!-- Username -->
+                <div class="mt-4">
+                    <label for="username" value="Name">Username</label>
+
+                    <div class="inputField">
+                        <input id="username" class="block mt-1 w-full" type="text" name="username" value="<?php old('Username'); ?>" required autofocus />
                     </div>
                 </div>
 

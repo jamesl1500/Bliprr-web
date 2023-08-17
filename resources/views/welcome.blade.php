@@ -1,3 +1,8 @@
+<?php
+$title = "Welcome";
+$description = "Welcome to Blipper. Join in on all of the fun!";
+?>
+
 @extends('layouts.guest')
 
 @section('content')

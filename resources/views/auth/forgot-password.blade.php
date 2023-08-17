@@ -1,36 +1,80 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+<?php
+$title = "Forgot Password";
+$description = "Reset your password!";
+?>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+
+@extends('layouts.guest')
+
+@section('content')
+    <div class="welcome-jumbotron">
+        <div class="inner-welcome-jumbotron container-lg">
+            <div class="row">
+                <div class="left-welcome col-lg-12">
+                    <h1 class="text-center">Forgot Password</h1>
+                    <p class="text-center">{{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}</p>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="welcome-auth container">
+        <div class="welcome-auth-inner">
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+                <?php
+                // Check if there are any errors
+                if(session('status'))
+                {
+                    ?>
+                        <div class="alert alert-success">
+                            <?php echo session('status'); ?>
+                        </div>
+                    <?php
+                }
+                ?>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                <!-- Error Messages -->
+                <?php
+                // Check if there are any errors
+                if($errors->any())
+                {
+                    ?>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <?php
+                                    foreach($errors->all() as $error)
+                                    {
+                                        ?>
+                                            <li><?php echo $error; ?></li>
+                                        <?php
+                                    }
+                                ?>
+                            </ul>
+                        </div>
+                    <?php
+                }
+                ?>
+                <!-- Email Address -->
+                <div class="">
+                    <label for="email" value="Email">Email</label>
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+                    <div class="inputField">
+                        <input id="email" class="block mt-1 w-full" type="email" name="email" value="<?php old('email'); ?>" required />
+                    </div>
+                </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                <div class="flex items-center justify-end mt-4" style="justify-content: space-between;">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" style="float: left;" href="{{ route('login') }}">
+                        {{ __('Nevermind?') }}
+                    </a>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+                    <button class="btn btn-primary-dark">
+                        {{ __('Reset Password') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

@@ -1,3 +1,8 @@
+<?php
+$title = "Login";
+$description = "Jump back into the fun!";
+?>
+
 @extends('layouts.guest')
 
 @section('content')
@@ -13,6 +18,19 @@
     </div>
     <div class="welcome-auth container">
         <div class="welcome-auth-inner">
+            <!-- Success Message -->
+            <?php
+            // Check if there are any errors
+            if(session('status'))
+            {
+                ?>
+                    <div class="alert alert-success">
+                        <?php echo session('status'); ?>
+                    </div>
+                <?php
+            }
+            ?>
+            
             <!-- Error Messages -->
             <?php
             // Check if there are any errors

@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="<?php echo csrf_token(); ?>">
+
 
     <!-- Title -->
     <title><?php if(isset($title) && $title != "") { echo $title . " | "; } ?><?php echo env('APP_NAME'); ?></title>
@@ -23,9 +22,6 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/8ea51260da.js" crossorigin="anonymous"></script>
-
-    <!-- Base url html -->
-    <base href="{{ url('/') }}">
 </head>
 <body>
 <div class="header-hold">
@@ -39,7 +35,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script src="{{ asset('js/scripts.js') }}"></script>
 

@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -41,4 +42,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the blips that belong to the user.
+     */
+    public function blips()
+    {
+        return $this->hasMany(Blips::class, 'blip_author');
+    }
+
+    /**
+     * Get the followings that belong to the user.
+     */
+    public function followings()
+    {
+        return $this->hasMany(Followings::class, 'follower_id');
+    }
+
+    /**
+     * Get the followers that belong to the user.
+     */
+    public function followers()
+    {
+        return $this->hasMany(Followings::class, 'followee_id');
+    }
 }

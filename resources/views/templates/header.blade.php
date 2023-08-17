@@ -19,9 +19,12 @@
                     if(Auth::check())
                     {
                         ?>
-                            <li><a href="{{ route('home') }}">Timeline</a></li>
-                            <li><a href="/profile/<?php echo Auth::user()->username; ?>">Profile</a></li>
-                            <li><a href="{{ route('logout') }}">Logout</a></li>
+                            <li><a href="{{ route('timeline.index') }}">Timeline</a></li>
+                            <li><a href="{{ route('settings.index') }}">Settings</a></li>
+                            <li><a id="logoutBtnAction" data-csrf="{{ csrf_token() }}" href="{{ route('logout') }}">Logout</a></li>
+                            <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         <?php
                     }else {
                         ?>

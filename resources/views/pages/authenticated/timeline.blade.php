@@ -1,29 +1,77 @@
+<?php
+$title = "Timeline";
+$description = "Here are the latest blips from your feed.";
+?>
+
 @extends('layouts.logged')
 
 @section('content')
-    <div class="page-timeline container-lg">
+    <div class="page-timeline">
         <div class="timeline-head">
-            <div class="timeline-head-inner">
+            <div class="timeline-head-inner container-lg">
                 <div class="timeline-head-left">
                     <h1>Timeline</h1>
                     <p>Here are the latest blips from your feed.</p>
                 </div>
-                <div class="timeline-head-right">
-                    <a href="" class="btn btn-primary-dark">Create a Blip</a>
+                <div class="timeline-head-bottom col-lg-8">
+                    <form action="{{ route('blip.create') }}" method="post">
+                        @csrf
+                        <div class="error" style="width: 99%;">
+                            @if($errors->has('blip_content'))
+                                <p class="alert alert-danger">{{ $errors->first('blip_content') }}</p>
+                            @endif
+                        </div>
+                        <div class="success" style="width: 99%;">
+                            @if(Session::has('blip_created'))
+                                <p>{{ Session::get('blip_created') }}</p>
+                            @endif
+                        </div>
+                        <div class="inputField">
+                            <textarea style="background-color: white;" name="blip_content" id="blip" placeholder="What's on your mind?"></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Post Blip">
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="timeline-body">
+        <div class="timeline-body container-lg">
             <div class="timeline-body-inner row">
                 <div class="timeline-left-body col-lg-8">
                 <!-- Latest Blips -->
                 <?php
-                    $blips = App\Models\Blips::orderBy('created_at', 'desc')->take(6)->get()->toArray();
+                    // Gather logged users followings
+                    $followings = Auth::user()->followings->toArray();
 
-                    foreach($blips as $blip) 
+                    // Add logged user to followings array
+                    array_push($followings, array('followee_id' => Auth::user()->id));
+
+                    // Gather logged users followings ids
+                    $followings_ids = array_column($followings, 'followee_id');
+
+                    // Gather blips from logged users followings
+                    $blips = App\Models\Blips::whereIn('blip_author', $followings_ids)->orderBy('created_at', 'desc')->get()->toArray();
+
+                    // Display blips if there are any
+                    if(count($blips) > 0)
                     {
+                        foreach($blips as $blip) 
+                        {
+                            ?>
+                                <x-blip blip="<?php echo $blip['id']; ?>"/>
+                            <?php
+                        }
+                    }else{
                         ?>
-                            <x-blip blip="<?php echo $blip['id']; ?>"/>
+                            <div class="no-blips">
+                                <div class="no-blips-inner">
+                                    <div class="no-blips-left">
+                                        <p>No blips yet!</p>
+                                    </div>
+                                    <div class="no-blips-right">
+                                        <p>Follow someone to see their blips!</p>
+                                    </div>
+                                </div>
+                            </div>
                         <?php
                     }
                 
@@ -47,13 +95,13 @@
                                             <div class="trending-blipper">
                                                 <div class="trending-blipper-inner">
                                                     <div class="trending-blipper-left">
-                                                        <a href="" class="trending-blipper-avatar">
-                                                            <img src="https://via.placeholder.com/50" alt="Avatar">
+                                                        <a href="/p/<?php echo $user['username']; ?>" class="trending-blipper-avatar">
+                                                            <div class="profile_image" style="background-image: url('/usr_data/<?php echo $user['profile_picture']; ?>');"></div>
                                                         </a>
                                                     </div>
                                                     <div class="trending-blipper-right">
                                                         <div class="trending-blipper-right-inner">
-                                                            <a href="" class="trending-blipper-username">
+                                                            <a href="/p/<?php echo $user['username']; ?>" class="trending-blipper-username">
                                                                 <h3>{{ $user['name'] }}</h3>
                                                             </a>
                                                             <p class="trending-blipper-blips">{{ $user['username'] }}</p>
