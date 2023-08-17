@@ -517,6 +517,10 @@ ul{
         justify-content: space-between;
 
         .blip{
+            @media screen and (max-width: 899px){
+                width: 100%;
+            }
+
             width: 49%;
         }
     }
@@ -723,7 +727,8 @@ ul{
         padding-top: 150px;
 
         border-bottom: 1px solid #eee;
-        background: #333;
+        background-color: #c2eaba;
+        background-image: linear-gradient(319deg, #c2eaba 0%, #c5f4e0 37%, #efc2cf 100%);    
 
         .page-settings-head-inner{
             padding-top: 50px;
@@ -737,6 +742,7 @@ ul{
                     font-weight: 600;
                     color: white;
                     line-height: 1.2em;
+                    text-shadow: $text-shadow;
                 }
 
                 p{
@@ -745,6 +751,7 @@ ul{
                     font-weight: 300;
                     line-height: 1.5em;
                     padding: 20px 0px;
+                    text-shadow: $text-shadow;
                 }
             }
         }
@@ -813,6 +820,9 @@ ul{
 * Page: Profile
 */
 .page-profile-top{
+    @media screen and (max-width: 1199px){
+        height:auto;
+    }
     height: 450px;
     border-bottom: 1px solid #eee;
 
@@ -826,6 +836,10 @@ ul{
         }
 
         .page-profile-bottom-info{
+            @media screen and (max-width: 1199px){
+                height:auto;
+            }
+
             height: 100px;
             background: white;
             box-shadow: $box-shadow;
@@ -835,12 +849,23 @@ ul{
                 .profile-bottom-left{
 
                     .profile-bottom-left-inner{
+                        @media screen and (max-width: 1199px){
+                            display: block;
+                        }
+
                         display: flex;
 
                         .profile-bottom-left-left{
+                            @media screen and (max-width: 1199px){
+                                margin-right: 0px;
+                            }
                             margin-right: 25px;
 
                             .profile-picture{
+                                @media screen and (max-width: 1199px){
+                                    margin: 0% auto;
+                                    margin-bottom: -125px;
+                                }
                                 border-radius: 5%;
                                 height: 200px;
                                 width:200px;
@@ -855,11 +880,17 @@ ul{
                         }
 
                         .profile-bottom-right-info{
+                            @media screen and (max-width: 1199px){
+                                display: block;
+                            }
                             display: flex;
                             justify-content: space-between;
                             width: 100%;
 
                             .profile-bottom-middle{
+                                @media screen and (max-width: 1199px){
+                                    text-align: center;
+                                }
                                 padding-top: 15px;
 
                                 h1{
@@ -872,6 +903,24 @@ ul{
                                     padding-top: 5px;
                                     color: #aaa;
                                 }
+
+                                .profile-bottom-mobile-bio{
+                                    @media screen and (max-width: 1199px){
+                                        display: block;
+                                    }
+                                    display: none;
+                                }
+                            }
+
+                            .page-profile-mobile-actions{
+                                @media screen and (max-width: 1199px){
+                                    display: block;
+                                    padding: 30px;
+
+                                    width: 250px;
+                                    margin: 0% auto;
+                                }
+                                display: none;
                             }
 
                             .profile-bottom-right{
@@ -879,9 +928,19 @@ ul{
                                 .profile-stats{
 
                                     .profile-stats-inner{
+                                        @media screen and (max-width: 1199px){
+                                            gap: 30px;
+                                            justify-content: center;
+                                            padding-bottom: 15px;
+                                            border-bottom: 1px solid #eee;
+                                        }
                                         display: flex;
 
                                         .profile-stats-item{
+                                            @media screen and (max-width: 1199px){
+                                                margin-left: 0px;
+                                                min-width: 80px;
+                                            }
                                             margin-left: 15px;
 
                                             .profile-stats-item-inner{
@@ -922,6 +981,16 @@ ul{
         .page-profile-bottom-row{
 
             .page-profile-bottom-left{
+                @media screen and (max-width: 1199px){
+                    display: none;
+                }
+
+                .page-profile-actions{
+                    @media screen and (max-width: 1199px){
+                        display: none;
+                    }
+                    margin-top: 25px;
+                }
 
                 .page-profile-bio{
                     
@@ -943,6 +1012,9 @@ ul{
             }
 
             .page-profile-bottom-middle{
+                @media screen and (max-width: 1199px){
+                    width: 100%;
+                }
 
                 .no-blips{
                     padding-top: 25px;

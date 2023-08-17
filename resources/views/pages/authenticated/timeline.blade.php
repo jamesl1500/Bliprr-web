@@ -8,7 +8,7 @@ $description = "Here are the latest blips from your feed.";
 @section('content')
     <div class="page-timeline">
         <div class="timeline-head">
-            <div class="timeline-head-inner container-lg">
+            <div class="timeline-head-inner container-lg container-md container-sm">
                 <div class="timeline-head-left">
                     <h1>Timeline</h1>
                     <p>Here are the latest blips from your feed.</p>
@@ -34,7 +34,7 @@ $description = "Here are the latest blips from your feed.";
                 </div>
             </div>
         </div>
-        <div class="timeline-body container-lg">
+        <div class="timeline-body container-lg container-md container-sm">
             <div class="timeline-body-inner row">
                 <div class="timeline-left-body col-lg-8">
                 <!-- Latest Blips -->

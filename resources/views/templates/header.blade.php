@@ -1,19 +1,19 @@
-<header class="header header-light container-lg">
+<header class="header header-light container-lg container-md container-sm">
     <div class="header-inner row">
-        <div class="header-branding col-lg-3">
+        <div class="header-branding col-lg-8 col-lg-8 col-md-8 col-sm-4 col-xs-4">
             <a href="{{ route('home') }}">
                 <img src="{{ asset('images/bliprr_black_circle.png') }}" /> 
                 <h3>Bliprr</h3>
             </a>
         </div>
-        <div class="header-search col-lg-5">
+        <div class="header-search col-lg-5" style="display: none">
             <form action="">
                 <div class="inputField">
                     <input type="search" id="header-search" placeholder="Search for blips..." />
                 </div>
             </form>
         </div>
-        <div class="header-nav col-lg-4">
+        <div class="header-nav col-lg-4 col-md-4 col-sm-8 col-xs-8">
             <ul>
                 <?php
                     if(Auth::check())

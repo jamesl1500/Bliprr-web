@@ -7,7 +7,7 @@ $description = "Welcome to Blipper. Join in on all of the fun!";
 
 @section('content')
     <div class="welcome-jumbotron">
-        <div class="inner-welcome-jumbotron container-lg">
+        <div class="inner-welcome-jumbotron container-lg container-md container-sm">
             <div class="row">
                 <div class="left-welcome col-lg-6">
                     <h1>Welcome to Bliprr</h1>
@@ -20,7 +20,7 @@ $description = "Welcome to Blipper. Join in on all of the fun!";
             </div>
         </div>
     </div>
-    <div class="welcome-latest container-lg">
+    <div class="welcome-latest container-lg container-md container-sm">
         <div class="top-latest">
             <div class="left-latest col-lg-6">
                 <h2>Latest Blips</h2>

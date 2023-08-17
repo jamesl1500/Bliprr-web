@@ -8,14 +8,14 @@ $description = "Edit your profile settings.";
 @section('content')
     <div class="page-settings">
         <div class="page-settings-head">
-            <div class="page-settings-head-inner container-lg">
+            <div class="page-settings-head-inner container-lg container-md container-sm">
                 <div class="page-settings-head-left">
                     <h1>Settings</h1>
                     <p>Edit your profile settings.</p>
                 </div>
             </div>
         </div>
-        <div class="page-settings-bottom container-lg">
+        <div class="page-settings-bottom container-lg container-md container-sm">
             @include('components.flash-messages')
             <div class="inner-settings-body">
                 <!-- Profile Picture -->
