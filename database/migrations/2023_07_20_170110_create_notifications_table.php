@@ -16,8 +16,8 @@ class CreateNotificationsTable extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->string('nuid');
-            $table->string('note_to_id');
-            $table->string('note_from_id');
+            $table->unsignedBigInteger('note_to_id');
+            $table->unsignedBigInteger('note_from_id');
             $table->string('note_type');
             $table->string('note_title');
             $table->string('note_desc');

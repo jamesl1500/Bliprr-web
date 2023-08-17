@@ -14,7 +14,7 @@ class AddBuidColumnToBlipRepliesTable extends Migration
     public function up()
     {
         Schema::table('blip_replies', function (Blueprint $table) {
-            $table->string('buid')->after('ruid')->nullable();
+            $table->unsignedBigInteger('buid')->after('ruid')->nullable();
         });
     }
 

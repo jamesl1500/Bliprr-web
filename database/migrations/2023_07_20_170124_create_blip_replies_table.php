@@ -16,7 +16,7 @@ class CreateBlipRepliesTable extends Migration
         Schema::create('blip_replies', function (Blueprint $table) {
             $table->id();
             $table->string('ruid');
-            $table->string('replyer_id');
+            $table->unsignedBigInteger('replyer_id');
             $table->string('note_id');
             $table->string('reply_content');
             $table->timestamps();

@@ -15,8 +15,8 @@ class CreateBlipLikesTable extends Migration
     {
         Schema::create('blip_likes', function (Blueprint $table) {
             $table->id();
-            $table->string('buid');
-            $table->string('liker_id');
+            $table->unsignedBigInteger('buid');
+            $table->unsignedBigInteger('liker_id');
             $table->string('note_id');
             $table->timestamps();
         });

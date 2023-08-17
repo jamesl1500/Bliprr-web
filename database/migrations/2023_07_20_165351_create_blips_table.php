@@ -16,7 +16,7 @@ class CreateBlipsTable extends Migration
         Schema::create('blips', function (Blueprint $table) {
             $table->id();
             $table->string('buid');
-            $table->string('blip_author');
+            $table->unsignedBigInteger('blip_author');
             $table->longText('blip_content');
             $table->boolean('blip_privacy');
             $table->boolean('blip_deleted');
