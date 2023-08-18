@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/bliprr_black_circle.png') }}" type="image/x-icon">
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/8ea51260da.js" crossorigin="anonymous"></script>
 </head>
