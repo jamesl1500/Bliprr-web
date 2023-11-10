@@ -7,12 +7,15 @@ use App\Models\Blip_reply;
 use Illuminate\Http\Request;
 
 use App\Models\Blips;
+use App\Models\User;
+
+use App\Notifications\BlipLike;
+
 
 class BlipsController extends Controller
 {
     // Create blips
     public function create(Request $request) {
-        echo "ok";
         // Validate request
         $request->validate([
             'blip_content' => 'required|max:255'
@@ -180,6 +183,11 @@ class BlipsController extends Controller
 
         // Save like
         $like->save();
+
+        // Send notification
+        if($blip->blip_author != auth()->user()->id){
+            User::find($blip->blip_author)->notify(new BlipLike($blip, auth()->user()));
+        }
 
         // Return to timeline
         return response()->json([

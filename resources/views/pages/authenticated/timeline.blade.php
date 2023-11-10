@@ -78,6 +78,39 @@ $description = "Here are the latest blips from your feed.";
                 ?>
                 </div>
                 <div class="timeline-right-body col-lg-4">
+                    <!-- Notifications Card -->
+                    <div class="notifications-card">
+                        <div class="notifications-card-inner">
+                            <div class="notifications-card-head">
+                                <h2>Notifications</h2>
+                                <p>Here are your latest notifications.</p>
+                                @if (auth()->user()->unreadNotifications)
+                                    <a href="{{route('notifications.mark-as-read')}}" class="">Mark All as Read</a>
+                                @endif
+                            </div>
+                            <div class="notifications-card-body">
+                                <?php
+                                    // Get unread notifications
+                                    $unread_notifications = auth()->user()->unreadNotifications->toArray();
+
+                                    // Get read notifications
+                                    $read_notifications = auth()->user()->readNotifications->toArray();
+
+                                    // Merge notifications
+                                    $notifications = array_merge($unread_notifications, $read_notifications);
+
+                                    // Display notifications
+                                    foreach($notifications as $notification) 
+                                    {
+                                        ?>
+                                            <x-notification notification="<?php echo $notification['id']; ?>"/>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+            
                     <!-- Trending blippers -->
                     <div class="trending-blippers">
                         <div class="trending-blippers-inner">

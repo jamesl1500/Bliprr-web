@@ -30,7 +30,7 @@ document.getElementById('logoutBtnAction').addEventListener('click', logout);
  */
 var deleteBlip = function deleteBlip(id) {
   $.ajax({
-    url: '/blip/delete',
+    url: '/api/blip/delete',
     type: 'DELETE',
     data: {
       blip_id: id,
@@ -40,6 +40,9 @@ var deleteBlip = function deleteBlip(id) {
       if (result.status == 'success' && result) {
         $('#blip-' + id).fadeOut('slow');
       }
+    },
+    error: function error(result) {
+      alert(result.message);
     }
   });
 };

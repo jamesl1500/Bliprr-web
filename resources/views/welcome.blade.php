@@ -28,18 +28,22 @@ $description = "Welcome to Blipper. Join in on all of the fun!";
             </div>
         </div>
         <div class="bottom-latest">
-            <!-- Latest Blips -->
-            <?php
-                $blips = App\Models\Blips::orderBy('created_at', 'desc')->take(6)->get()->toArray();
+            <div class="row" data-masonry='{"percentPosition": true }' >
+                <!-- Latest Blips -->
+                <?php
+                    $blips = App\Models\Blips::orderBy('created_at', 'desc')->take(6)->get()->toArray();
 
-                foreach($blips as $blip) 
-                {
-                    ?>
-                        <x-blip blip="<?php echo $blip['id']; ?>"/>
-                    <?php
-                }
-            
-            ?>
+                    foreach($blips as $blip) 
+                    {
+                        ?>
+                            <div class="col-6">
+                                <x-blip blip="<?php echo $blip['id']; ?>"/>
+                            </div>
+                        <?php
+                    }
+                
+                ?>
+            </div>
         </div>
     </div>
 @endsection

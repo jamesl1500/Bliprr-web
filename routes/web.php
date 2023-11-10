@@ -3,6 +3,7 @@
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\FollowingsController;
 use App\Http\Controllers\BlipsController;
+use App\Http\Controllers\AuthController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,6 @@ Route::get('/timeline', function () {
 })->middleware(['auth'])->name('timeline.index');
 
 /* Blips: Post routes */
-
 // Create blip
 Route::post('/blip/create', [BlipsController::class, 'create'])->middleware(['auth'])->name('blip.create');
 
@@ -70,5 +70,10 @@ Route::get('/p/{username}', function ($username) {
 // Follow route
 Route::post('/follow', [FollowingsController::class, 'follow'])->middleware(['auth'])->name('follow');
 Route::post('/unfollow', [FollowingsController::class, 'unfollow'])->middleware(['auth'])->name('unfollow');
+
+// Notifications
+Route::post('/notifications/mark-as-read', function(){
+
+})->middleware(['auth'])->name('notifications.mark-as-read');
 
 require __DIR__.'/auth.php';

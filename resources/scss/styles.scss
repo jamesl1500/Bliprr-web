@@ -6,6 +6,10 @@
 $box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
 $text-shadow: 0px 0px 5px rgba(0,0,0,0.5);
 
+// Border
+$border-radius: 3px;
+$border-color: #cacaca;
+
 *{
     margin: 0;
     padding: 0;
@@ -190,7 +194,7 @@ ul{
     padding-top: 30px;
     padding-bottom: 30px;
     margin-top: 25px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid $border-color;
 
     .footer{
         height: 80px;
@@ -201,6 +205,43 @@ ul{
 
             a{
                 border-bottom: 1px solid #333;
+            }
+        }
+    }
+}
+
+/**
+* Notifications
+*/
+.notification{
+    margin-top: 10px;
+
+    .notification-inner{
+
+        .left-profile{
+            float: left;
+            margin-right: 10px;
+
+            .left-profile-picture{
+                border-radius: 50%;
+                height: 45px;
+                width: 45px;
+
+                background-size: cover;
+            }
+        }
+
+        .right-note-info{
+
+            p{
+                
+                a{
+                    font-weight: 600;
+                }
+
+                span{
+                    color: #f44336;
+                }
             }
         }
     }
@@ -313,7 +354,7 @@ ul{
         }
 
         .blip-reply{
-            border-top: 1px solid #eee;
+            border-top: 1px solid $border-color;
             padding-top: 25px;
             margin-top: 20px;
             display: none;
@@ -344,14 +385,14 @@ ul{
                     padding: 10px 15px;
                     background: #f5f5f5;
                     outline: none;
-                    border: 1px solid #fff;
+                    border: 1px solid rgba(0,0,0,.1);
                     resize: none;
                     margin-right: 15px;
 
                     &:hover, :focus{
                         background: #fff;
                         box-shadow: $box-shadow;
-                        border: 1px solid #eee;
+                        border: 1px solid rgba(0,0,0,.2);
                     }
 
                     &::placeholder{
@@ -512,16 +553,8 @@ ul{
         padding-top: 25px;
         padding-bottom: 25px;
 
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-
         .blip{
-            @media screen and (max-width: 899px){
-                width: 100%;
-            }
 
-            width: 49%;
         }
     }
 }
@@ -579,7 +612,7 @@ ul{
                             width: 99%;
 
                             background-color: white;
-                            border: 1px solid #eee;
+                            border: 1px solid $border-color;
                             border-radius: 5px;
 
                             padding: 20px;
@@ -588,7 +621,7 @@ ul{
                             &:focus{
                                 outline: none;
                                 background-color: #fff;
-                                border: 1px solid #eee;
+                                border: 1px solid $border-color;
                             }
                         }
                     }
@@ -642,6 +675,38 @@ ul{
             }
 
             .timeline-right-body{
+
+                .notifications-card{
+                    background: #fff;
+                    border-radius: 3px;
+
+                    padding: 25px;
+                    box-shadow: $box-shadow;
+
+                    margin-top: 25px;
+
+                    .notifications-card-inner{
+
+                        .notifications-card-head{
+                            padding-bottom: 15px;
+                            border-bottom: 1px solid $border-color;
+
+                            h2{
+                                font-size: 1.4em;
+                                font-weight: 600;
+                                line-height: 1.2em;
+                            }
+
+                            p{
+                                padding-top: 5px;
+                            }
+                        }
+
+                        .notifications-card-body{
+                            min-height: 200px;
+                        }
+                    }
+                }
 
                 .trending-blippers{
 

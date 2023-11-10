@@ -1330,7 +1330,7 @@ ul {
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: 25px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #cacaca;
 }
 .footer-hold .footer {
   height: 80px;
@@ -1341,6 +1341,29 @@ ul {
 }
 .footer-hold .footer .footer-inner a {
   border-bottom: 1px solid #333;
+}
+
+/**
+* Notifications
+*/
+.notification {
+  margin-top: 10px;
+}
+.notification .notification-inner .left-profile {
+  float: left;
+  margin-right: 10px;
+}
+.notification .notification-inner .left-profile .left-profile-picture {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  background-size: cover;
+}
+.notification .notification-inner .right-note-info p a {
+  font-weight: 600;
+}
+.notification .notification-inner .right-note-info p span {
+  color: #f44336;
 }
 
 /**
@@ -1417,7 +1440,7 @@ ul {
   color: #333;
 }
 .blip .blip-inner .blip-reply {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #cacaca;
   padding-top: 25px;
   margin-top: 20px;
   display: none;
@@ -1446,14 +1469,14 @@ ul {
   padding: 10px 15px;
   background: #f5f5f5;
   outline: none;
-  border: 1px solid #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   resize: none;
   margin-right: 15px;
 }
 .blip .blip-inner .blip-reply form input[type=text]:hover, .blip .blip-inner .blip-reply form input[type=text] :focus {
   background: #fff;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .blip .blip-inner .blip-reply form input[type=text]::-moz-placeholder {
   color: #999;
@@ -1574,19 +1597,7 @@ ul {
 .welcome-latest .bottom-latest {
   padding-top: 25px;
   padding-bottom: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
-.welcome-latest .bottom-latest .blip {
-  width: 49%;
-}
-@media screen and (max-width: 899px) {
-  .welcome-latest .bottom-latest .blip {
-    width: 100%;
-  }
-}
-
 /**
 * Page: Timeline
 */
@@ -1626,7 +1637,7 @@ ul {
   resize: none;
   width: 99%;
   background-color: white;
-  border: 1px solid #eee;
+  border: 1px solid #cacaca;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
@@ -1634,7 +1645,7 @@ ul {
 .page-timeline .timeline-head .timeline-head-inner .timeline-head-bottom form .inputField textarea:focus {
   outline: none;
   background-color: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #cacaca;
 }
 .page-timeline .timeline-head .timeline-head-inner .timeline-head-bottom form input[type=submit] {
   margin-top: 15px;
@@ -1657,6 +1668,28 @@ ul {
 }
 .page-timeline .timeline-body .timeline-body-inner .timeline-left-body .no-blips .no-blips-inner .no-blips-right {
   text-align: left;
+}
+.page-timeline .timeline-body .timeline-body-inner .timeline-right-body .notifications-card {
+  background: #fff;
+  border-radius: 3px;
+  padding: 25px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  margin-top: 25px;
+}
+.page-timeline .timeline-body .timeline-body-inner .timeline-right-body .notifications-card .notifications-card-inner .notifications-card-head {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #cacaca;
+}
+.page-timeline .timeline-body .timeline-body-inner .timeline-right-body .notifications-card .notifications-card-inner .notifications-card-head h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+.page-timeline .timeline-body .timeline-body-inner .timeline-right-body .notifications-card .notifications-card-inner .notifications-card-head p {
+  padding-top: 5px;
+}
+.page-timeline .timeline-body .timeline-body-inner .timeline-right-body .notifications-card .notifications-card-inner .notifications-card-body {
+  min-height: 200px;
 }
 .page-timeline .timeline-body .timeline-body-inner .timeline-right-body .trending-blippers .trending-blippers-inner {
   padding-top: 25px;
