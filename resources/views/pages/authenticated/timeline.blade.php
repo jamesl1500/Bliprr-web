@@ -84,9 +84,6 @@ $description = "Here are the latest blips from your feed.";
                             <div class="notifications-card-head">
                                 <h2>Notifications</h2>
                                 <p>Here are your latest notifications.</p>
-                                @if (auth()->user()->unreadNotifications)
-                                    <a href="{{route('notifications.mark-as-read')}}" class="">Mark All as Read</a>
-                                @endif
                             </div>
                             <div class="notifications-card-body">
                                 <?php
