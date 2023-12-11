@@ -76,4 +76,7 @@ Route::post('/notifications/mark-as-read', function(){
 
 })->middleware(['auth'])->name('notifications.mark-as-read');
 
+// Messaging routes
+
+
 require __DIR__.'/auth.php';
