@@ -24,6 +24,8 @@
         "webpack-livereload-plugin": "^3.0.2"
     },
     "dependencies": {
-        "laravel-mix-blade-reload": "^3.0.0"
+        "laravel-echo": "^1.15.3",
+        "laravel-mix-blade-reload": "^3.0.0",
+        "pusher-js": "^8.4.0-rc2"
     }
 }

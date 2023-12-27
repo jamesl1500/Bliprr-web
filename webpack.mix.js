@@ -19,6 +19,9 @@ mix.js('resources/js/bootstrap.js', 'public/js');
 mix.js('resources/js/scripts.js', 'public/js');
 
 var LiveReloadPlugin = require('webpack-livereload-plugin');
+
 mix.webpackConfig({
     plugins: [new LiveReloadPlugin()]
 });
+
+mix.bladeReload();

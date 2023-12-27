@@ -6,8 +6,8 @@ $description = "Here are the latest blips from your feed.";
 @extends('layouts.logged')
 
 @section('content')
-    <div class="page-timeline">
-        <div class="timeline-head">
+    <div class="page page-timeline">
+        <div class="page-head timeline-head">
             <div class="timeline-head-inner container-lg container-md container-sm">
                 <div class="timeline-head-left">
                     <h1>Timeline</h1>

@@ -1,3 +1,5 @@
+import Echo from "laravel-echo"
+
 jQuery(function(){
     /**
      * Close alert
@@ -6,6 +8,7 @@ jQuery(function(){
         $('.alert').fadeOut('slow');
     });
 });
+
 var busy = false;
 
 /**
@@ -185,3 +188,84 @@ document.querySelectorAll('.unlike').forEach(item => {
         unlikeBlip(item.dataset.id);
     })
 });
+
+// Conversation ajax functions
+
+/**
+ * Send message function
+ * 
+ * @param {int} id
+ * @param {string} content
+ */
+const sendMessage = (id, content) => {
+    if(busy) return false;
+
+    busy = true;
+
+    if(id != '' && content != ''){
+        $.ajax({
+            url: '/messages/send',
+            type: 'POST',
+            data: {
+                conversation_uid: id,
+                message: content,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(result){
+                $('#message-textarea').val('');
+                busy = false;
+            }
+        });
+    } else {
+        alert('Invalid message');
+        busy = false;
+    }
+}
+
+document.querySelector('#message-form').addEventListener('submit', event => {
+    event.preventDefault();
+
+    const conversation_id = document.querySelector('#conversation_uid').value;
+    const content = document.querySelector('#message-textarea').value;
+
+    sendMessage(conversation_id, content);
+});
+
+/**
+ * Pusher
+ */
+const pusher_app_key = process.env.MIX_PUSHER_APP_KEY;
+const pusher_app_cluster = process.env.MIX_PUSHER_APP_CLUSTER;
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: pusher_app_key,
+    cluster: pusher_app_cluster,
+    encrypted: true,
+});
+
+// Listen for messages
+var conversation = document.querySelector('#conversation_uid');
+
+if(conversation){
+    // Scroll to bottom
+    var objDiv = document.getElementById("conversations-right-body");
+    objDiv.scrollTop = objDiv.scrollHeight;
+
+    // Listen for new messages
+    window.Echo.private('conversation.' + conversation.value).listen('MessagePosted', (e) => {
+        console.log(e);
+        // Append new message
+        $('#conversations-right-body').append(
+            '<div class="message-item">' +
+                '<div class="message-content">' +
+                    '<p>' + e.message + '</p>' +
+                '</div>' +
+            '</div>'
+        );
+
+        // Scroll to bottom
+        var objDiv = document.getElementById("conversations-right-body");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    });
+}

@@ -67,4 +67,12 @@ class User extends Authenticatable
         return $this->hasMany(Followings::class, 'followee_id');
     }
 
+    /**
+     * Get the conversations that belong to the user.
+     */
+    public function conversations()
+    {
+        return $this->hasMany(Conversation_members::class, 'user_uid');
+    }
+
 }

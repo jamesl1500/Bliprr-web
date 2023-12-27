@@ -1,3 +1,12 @@
+<?php
+// Conversations library
+use App\Libraries\Conversation;
+$conversation = new Conversation();
+
+// Title
+$title = $user->name . "'s Profile";
+$description = "View " . $user->name . "'s' profile.";
+?>
 @extends('layouts.logged')
 
 @section('content')
@@ -107,6 +116,10 @@
                                                         </form>
                                                     <?php
                                                 }
+
+                                                ?>
+                                                    <a href="{{ route('messages.create_conversation', $user->id) }}" class="btn btn-primary-dark" style="width: 100%;">Message</a>
+                                                <?php
                                             }else{
                                                 ?>
                                                     <a href="{{ route('settings.index') }}" class="btn btn-primary-dark" style="width: 100%;">Settings</a>
@@ -144,7 +157,7 @@
                                             <form action="{{ route('unfollow') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                                <button type="submit" class="btn btn-primary">Unfollow</button>
+                                                <button type="submit" class="btn btn-primary" style="width: 100%;margin-bottom: 10px;">Unfollow</button>
                                             </form>
                                         <?php
                                     }else{
@@ -154,6 +167,20 @@
                                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                                 <button type="submit" class="btn btn-primary-dark">Follow</button>
                                             </form>
+                                        <?php
+                                    }
+
+                                    // See if logged user has a conversation with the profile user
+                                    $checkIfConversationExists = $conversation->checkIfConversationExists(Auth::user()->id, $user->id);
+                                    
+                                    if($checkIfConversationExists)
+                                    {
+                                        ?>
+                                            <a href="{{ route('messages.conversation', $checkIfConversationExists->conversation_uid) }}" class="btn btn-primary-dark" style="width: 100%;">Message</a>
+                                        <?php
+                                    }else{
+                                        ?>
+                                            <a href="{{ route('messages.create_conversation', $user->id) }}" class="btn btn-primary-dark" style="width: 100%;">Message</a>
                                         <?php
                                     }
                                 }else{
