@@ -1994,8 +1994,8 @@ document.querySelector('#message-form').addEventListener('submit', function (eve
 /**
  * Pusher
  */
-var pusher_app_key = "";
-var pusher_app_cluster = "mt1";
+var pusher_app_key = "3bf356cb2eab336c07b1";
+var pusher_app_cluster = "us2";
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: pusher_app_key,
