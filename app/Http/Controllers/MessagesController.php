@@ -19,7 +19,7 @@ class MessagesController extends Controller
     // Index page
     public function index()
     {
-        return view('pages.authenticated.messages.index');
+        return view('pages.authenticated.messages.index', ['conversation_m' => $this->conversation]);
     }
 
     // Conversation view page
@@ -32,7 +32,7 @@ class MessagesController extends Controller
             return redirect('/messages')->with('error', 'Conversation does not exist.');
         }
 
-        return view('pages.authenticated.messages.conversation', ['id' => $id]);
+        return view('pages.authenticated.messages.conversation', ['id' => $id, 'conversation_m' => $this->conversation]);
     }
 
     // Create conversation view
@@ -151,6 +151,7 @@ class MessagesController extends Controller
         // Return the message
         $conversation_message['author'] = array(
             'name' => Auth::user()->name,
+            'username' => Auth::user()->username,
             'avatar' => Auth::user()->profile_picture
         );
 

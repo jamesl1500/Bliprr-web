@@ -1465,6 +1465,58 @@ ul{
                         }
                     }
                 }
+
+                .conversations-left-all{
+
+                    ul{
+
+                        li{
+
+                            .conversations-left-all-inner{
+                                display: flex;
+
+                                .conversations-left-all-left{
+
+                                    .conversations-left-all-left-inner{
+                                        padding-right: 10px;
+
+                                        img{
+                                            border-radius: 50%;
+                                            height: 50px;
+                                            width: 50px;
+
+                                            background-size: cover;
+                                        }
+                                    }
+                                }
+
+                                .conversations-left-all-right{
+                                    padding-top: 5px;
+    
+                                    a{
+                                        display: block;
+    
+                                        h3{
+                                            font-size: 1.0em;
+                                            font-weight: 800;
+                                            line-height: 1.2em;
+                                            padding: 0px;
+                                            margin: 0px;
+                                        }
+    
+                                        p{
+                                            font-size: 1.0em;
+                                            font-weight: 400;
+                                            line-height: 1.2em;
+                                            padding: 0px;
+                                            margin: 0px;
+                                        }
+                                    }
+                                }   
+                            }                        
+                        }
+                    }
+                }
             }
 
             .page-conversations-right{

@@ -1941,6 +1941,40 @@ var sendMessage = function sendMessage(id, content) {
         _token: $('meta[name="csrf-token"]').attr('content')
       },
       success: function success(result) {
+        var message = '<div class="conversations-right-body-message conversations-right-body-message-me ' + result.conversation_message_uid + '">';
+        message += '<div class="conversations-right-body-message-inner">';
+        message += '<div class="conversations-right-body-message-left">';
+        message += '<div class="conversations-right-body-message-left-inner">';
+        message += '<a class="conversations-right-body-message-left-avatar" href="/p/' + result.author.username + '">';
+        message += '<img src="/usr_data/' + result.author.avatar + '" alt="' + result.author.name + '">';
+        message += '</a>';
+        message += '</div>';
+        message += '</div>';
+        message += '<div class="conversations-right-body-message-right">';
+        message += '<div class="conversations-right-body-message-right-inner">';
+        message += '<div class="conversations-right-body-message-right-head">';
+        message += '<div class="conversations-right-body-message-right-head-inner">';
+        message += '<div class="conversations-right-body-message-right-head-left">';
+        message += '<h3>' + result.author.name + '</h3>';
+        message += '</div>';
+        message += '</div>';
+        message += '</div>';
+        message += '<div class="conversations-right-body-message-right-body">';
+        message += '<div class="conversations-right-body-message-right-body-inner">';
+        message += '<p>' + result.conversation_message_content + '</p>';
+        message += '</div>';
+        message += '</div>';
+        message += '</div>';
+        message += '</div>';
+        message += '</div>';
+        message += '</div>';
+        $('#conversations-right-body').append(message);
+
+        // Scroll to bottom
+        var objDiv = document.getElementById("conversations-right-body");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+        // Empty textarea
         $('#message-textarea').val('');
         busy = false;
       }
@@ -1960,8 +1994,8 @@ document.querySelector('#message-form').addEventListener('submit', function (eve
 /**
  * Pusher
  */
-var pusher_app_key = "3bf356cb2eab336c07b1";
-var pusher_app_cluster = "us2";
+var pusher_app_key = "";
+var pusher_app_cluster = "mt1";
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: pusher_app_key,

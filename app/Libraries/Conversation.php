@@ -21,12 +21,12 @@ class Conversation
     /**
      * GetOtherConversationMember
      */
-    public function GetOtherConversationMember($conversation_uid, $user_uid){
-        // Get the conversation
-        $conversation = $this->conversations_model->where('conversation_uid', $conversation_uid)->first();
+    public function GetOtherConversationMember($conversation_id, $user_uid){
+        // Get conversation ID
+        //$conversation = $this->conversations_model->where('conversation_uid', $conversation_id)->first();
 
         // Get the other member
-        $other_member = $this->conversation_members_model->where('conversation_uid', $conversation->id)->where('user_uid', '!=', $user_uid)->first();
+        $other_member = $this->conversation_members_model->where('conversation_uid', $conversation_id)->where('user_uid', '!=', $user_uid)->first();
 
         // Return the other member
         return $other_member;
@@ -47,19 +47,6 @@ class Conversation
 
         // Return the member
         return $member;
-    }
-
-    /**
-     * GetConversationUniqueId
-     * 
-     * @param string $conversation_id
-     */
-    public function GetConversationUniqueId($conversation_id){
-        // Get the conversation
-        $conversation = $this->conversations_model->where('id', $conversation_id)->first();
-
-        // Return the conversation UID
-        return $conversation->conversation_uid;
     }
 
     /**
@@ -140,5 +127,18 @@ class Conversation
 
         // Return the last message
         return $last_message;
+    }
+
+    /**
+     * GetConversationUniqueId
+     * -----------------------
+     * Get the unique ID of a conversation.
+     */
+    public function GetConversationUniqueId($conversation_id){
+        // Get the conversation
+        $conversation = $this->conversations_model->where('id', $conversation_id)->first();
+
+        // Return the conversation UID
+        return $conversation->conversation_uid;
     }
 }
